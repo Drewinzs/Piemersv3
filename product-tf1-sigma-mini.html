@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TF1 Sigma Mini - Fernox Latvia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spritespin@4.0.0/spritespin.css">
+    <script src="https://cdn.jsdelivr.net/npm/spritespin@4.0.0/spritespin.min.js"></script>
+    <style>
+        .product-page {
+            padding: 40px 0 60px 0;
+            background: var(--white);
+        }
+
+        .product-page .container {
+            max-width: 1600px;
+            padding: 0 40px;
+        }
+
+        .breadcrumb-section {
+            padding: 20px 0;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+            background: rgba(52, 152, 219, 0.1);
+            text-decoration: none;
+        }
+
+        .breadcrumb span.separator {
+            color: #999;
+            font-size: 12px;
+            margin: 0 4px;
+        }
+
+        .breadcrumb span.current {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 4px 8px;
+        }
+
+        .product-detail-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 30px;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .product-main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .product-thumbnail.active {
+            border-color: var(--secondary-color);
+        }
+
+        .product-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        .product-brand {
+            font-size: 16px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .product-price-section {
+            padding: 12px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .current-price {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .product-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .product-description h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .product-description h3:first-child {
+            margin-top: 0;
+        }
+
+        .product-description p {
+            margin-bottom: 12px;
+        }
+
+        .product-specs {
+            margin-top: 15px;
+        }
+
+        .product-specs h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .product-specs h3:first-child {
+            margin-top: 0;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .spec-value {
+            color: var(--text-color);
+        }
+
+        .product-actions {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .quantity-selector label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: var(--light-gray);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text-color);
+            transition: background 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: var(--border-color);
+        }
+
+        .quantity-value {
+            padding: 10px 20px;
+            border: none;
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn-add-to-cart {
+            padding: 15px 30px;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-add-to-cart:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-buy-now {
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-buy-now:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-actions-secondary {
+            margin-top: 30px;
+            padding: 25px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            width: 100%;
+        }
+
+        .secondary-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-secondary-action {
+            padding: 12px 20px;
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .btn-secondary-action:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .btn-secondary-action i {
+            font-size: 18px;
+            width: 20px;
+        }
+
+        .product-features {
+            margin-top: 15px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .product-features h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            margin-top: 15px;
+        }
+
+        .product-features h3:first-child {
+            margin-top: 0;
+        }
+
+        .product-features p {
+            margin-bottom: 10px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+        }
+
+        .features-list li i {
+            color: var(--success-color);
+            font-size: 18px;
+        }
+
+        .related-products {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .related-products h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .product-page .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-gallery {
+                position: static;
+            }
+
+            .product-title {
+                font-size: 24px;
+            }
+
+            .current-price {
+                font-size: 28px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Shopify integration classes */
+        .shopify-product-id {
+            display: none;
+        }
+
+        /* 360 View Modal */
+        .view360-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .view360-modal.active {
+            display: flex;
+        }
+
+        .view360-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0;
+        }
+
+        .view360-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 15px 20px;
+            border-bottom: 2px solid var(--border-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 10;
+        }
+
+        .view360-header h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .view360-close {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .view360-close:hover {
+            background: var(--light-gray);
+            color: var(--accent-color);
+        }
+
+        .view360-viewer {
+            flex: 1;
+            position: relative;
+            background: #000;
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            user-select: none;
+            width: 100%;
+            height: 100%;
+            min-height: calc(100vh - 60px);
+        }
+
+        .view360-viewer:active {
+            cursor: grabbing;
+        }
+
+        .view360-viewer .Spritespin-container {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .view360-viewer .Spritespin-canvas {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+
+        .view360-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .view360-video-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view360-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .view360-image.active {
+            display: block;
+        }
+
+        .view360-controls {
+            display: none;
+        }
+
+        .view360-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .view360-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .view360-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .view360-info {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .view360-container {
+                width: 100%;
+                height: 100vh;
+                padding: 0;
+            }
+
+            .view360-header h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="fernox.png" alt="Fernox Latvia" class="logo-image">
+                        </a>
+                    </div>
+                    
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html">Visi</a></li>
+                            <li class="has-dropdown">
+                                <a href="under-construction.html">Kategorijas <i class="fas fa-chevron-down"></i></a>
+                                <ul class="dropdown">
+                                    <li><a href="under-construction.html">Filtri</a></li>
+                                    <li><a href="under-construction.html">Tīrīšanas līdzekļi</a></li>
+                                    <li><a href="under-construction.html">Korozijas inhibitori</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="under-construction.html">Serviss</a></li>
+                            <li><a href="under-construction.html">Būvniecība</a></li>
+                            <li><a href="under-construction.html">Izpārdošana</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="header-actions">
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="compare-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Sākums
+                </a>
+                <span class="separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <a href="under-construction.html">Produkti</a>
+                <span class="separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <a href="under-construction.html">Filtri</a>
+                <span class="separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <span class="current">TF1 Sigma Mini</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Page -->
+    <section class="product-page">
+        <div class="container">
+            <div class="product-detail-wrapper">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="product-main-image" id="mainImage">
+                        <img src="tf1.jpg" alt="TF1 Sigma Mini" id="mainProductImage">
+                    </div>
+                    <div class="product-thumbnails">
+                        <div class="product-thumbnail active" onclick="changeImage('tf1.jpg')">
+                            <img src="tf1.jpg" alt="TF1 Sigma Mini">
+                        </div>
+                        <div class="product-thumbnail" onclick="changeImage('sigma1.jpg')">
+                            <img src="sigma1.jpg" alt="TF1 Sigma Mini">
+                        </div>
+                        <div class="product-thumbnail" onclick="changeImage('sigma2.jpg')">
+                            <img src="sigma2.jpg" alt="TF1 Sigma Mini">
+                        </div>
+                    </div>
+                    
+                    <!-- Papildu resursi moved here -->
+                    <div class="product-actions-secondary">
+                        <h3 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px;">Papildu resursi</h3>
+                        <div class="secondary-buttons">
+                            <button class="btn-secondary-action" onclick="registerWarranty()">
+                                <i class="fas fa-shield-alt"></i> Reģistrēt produkta garantiju
+                            </button>
+                            <button class="btn-secondary-action" onclick="view360()">
+                                <i class="fas fa-cube"></i> Produkta 360° skats
+                            </button>
+                            <button class="btn-secondary-action" onclick="downloadPipeGuide()">
+                                <i class="fas fa-file-pdf"></i> Cauruļu griezēja rokasgrāmata (PDF)
+                            </button>
+                            <button class="btn-secondary-action" onclick="downloadDataSheet()">
+                                <i class="fas fa-file-pdf"></i> Produkta datu lapa (PDF)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info-section">
+                    <div class="product-badges">
+                        <span class="badge new">JAUNS</span>
+                        <span class="badge discount">%%%</span>
+                    </div>
+                    
+                    <p class="product-brand">Fernox</p>
+                    <h1 class="product-title" id="productTitle">TF1 Sigma Mini</h1>
+                    
+                    <div class="product-price-section">
+                        <div class="product-price">
+                            <span class="current-price" id="productPrice">€€€€€</span>
+                            <span class="old-price" id="oldPrice">€€€€€</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Produkta pārskats</h3>
+                        <p>
+                            <strong>Kompakts dizains</strong> – TF1 Sigma Mini piedāvā īpaši kompaktu dizainu, kas nekompromitē veiktspēju. 
+                            Samazinātais filtra un cauruļvadu izmērs nozīmē, ka filtrs var tikt uzstādīts tieši zem katla, un ar tikai 105 mm brīvu vietu.
+                        </p>
+                        <p>
+                            <strong>Augstas kvalitātes komponenti</strong> – TF1 Sigma Mini izmanto augstas kvalitātes komponentu klāstu, kas nodrošina filtra optimālu veiktspēju. 
+                            Katrs kolektors ir izstrādāts, lai nodrošinātu vieglu uzstādīšanu, vienlaikus nodrošinot drošu savienojumu ar sistēmu. 
+                            Magnēts ir izgatavots, izmantojot augstas kvalitātes neodīmu, nodrošinot augstu efektivitātes uztveršanas līmeni, kā arī izturīgu filtrācijas vidi, kas nodrošinās pastāvīgu un konsekventu uztveršanas līmeni. 
+                            Misināta drenāžas punkts ļauj kontrolētu un tīru apkopi bez nepieciešamības nojaukt filtru.
+                        </p>
+                        <p>
+                            <strong>Augsta veiktspēja</strong> – TF1 Sigma Mini ir izstrādāts, lai nodrošinātu minimālu spiediena zudumu, vienlaikus uzturot augstu uztveršanas efektivitāti. 
+                            Magnēta mezgls un iekšējie plūsmas ceļi ir konstruēti, lai maksimāli palielinātu sistēmas piesārņojuma uztveršanu, vienlaikus nodrošinot, ka filtrs nevar aizsprostoties.
+                        </p>
+                        
+                        <h3 style="margin-top: 20px;">Pielietojums</h3>
+                        <p>
+                            TF1 Sigma Mini ir magnētiskais sistēmas filtrs, īpaši izstrādāts izmantošanai ierobežotās telpās. 
+                            Filtrs var viegli tikt uzstādīts uz horizontāliem, vertikāliem vai jebkādiem 360° cauruļvadu orientācijas.
+                        </p>
+                        <p>
+                            TF1 Sigma Mini nedrīkst uzstādīt ārā, un ideāli uz atgriešanas plūsmu uz katlu.
+                        </p>
+                    </div>
+
+                    <div class="product-specs">
+                        <h3>Veiktspēja</h3>
+                        <p><strong>Piemērotas šķidrumi:</strong></p>
+                        <ul class="spec-list">
+                            <li>• Ūdens</li>
+                            <li>• Inhibētas glikola šķīdumi</li>
+                            <li>• Fernox ķīmisko produktu klāsts / Sistēmas piedevas</li>
+                        </ul>
+                        <ul class="spec-list" style="margin-top: 12px;">
+                            <li>
+                                <span class="spec-label">Maksimālais glikola procents:</span>
+                                <span class="spec-value">50%</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Maksimālais darba spiediens:</span>
+                                <span class="spec-value">5bar (72psi)</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Maksimālā plūsmas ātrums:</span>
+                                <span class="spec-value">30 L/M</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Normāls darba temperatūras diapazons:</span>
+                                <span class="spec-value">0°C – 100°C</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Uztveršanas līmenis:</span>
+                                <span class="spec-value">Līdz 100% no sistēmas piesārņojuma</span>
+                            </li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 20px;">Fiziskās specifikācijas / Īpašības</h3>
+                        <ul class="spec-list">
+                            <li>• Filtrs – Stikla šķiedras pastiprināts neilons</li>
+                            <li>• Kolektors – Niķelēts misiņš</li>
+                            <li>• Drošības gredzens – Nerūsējošais tērauds</li>
+                            <li>• Drenāžas vārsta vāciņš – Niķelēts misiņš</li>
+                            <li>• Magnēts – Augstas jaudas neodīms</li>
+                            <li>• Blīvējumi un paplāksnes – EPDM</li>
+                        </ul>
+                    </div>
+
+                    <!-- Shopify Product ID (hidden, for integration) -->
+                    <div class="shopify-product-id" data-shopify-product-id="TF1-SIGMA-MINI"></div>
+
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label>Daudzums:</label>
+                            <div class="quantity-input">
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" class="quantity-value" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-add-to-cart" onclick="addToCart()" id="addToCartBtn" data-shopify-variant-id="">
+                            <i class="fas fa-shopping-cart"></i> Pievienot grozam
+                        </button>
+                        
+                        <button class="btn-buy-now" onclick="buyNow()" id="buyNowBtn" data-shopify-variant-id="">
+                            Iepirkties tagad
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2>Saistītie produkti</h2>
+                <div class="products-grid featured-products-grid">
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge new">JAUNS</span>
+                            <span class="badge discount">%%%</span>
+                        </div>
+                        <div class="product-image">
+                            <img src="TF1SIGMA.jpg" alt="TF1 Sigma HP Filtrs">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-brand">Fernox</p>
+                            <h3 class="product-name">TF1 Sigma HP Filtrs</h3>
+                            <div class="product-price">
+                                <span class="current-price">€€€€€</span>
+                                <span class="old-price">€€€€€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge new">JAUNS</span>
+                            <span class="badge discount">%%%</span>
+                        </div>
+                        <div class="product-image">
+                            <img src="omega.jpg" alt="TF1 Omega Filtrs">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-brand">Fernox</p>
+                            <h3 class="product-name">TF1 Omega Filtrs</h3>
+                            <div class="product-price">
+                                <span class="current-price">€€€€€</span>
+                                <span class="old-price">€€€€€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge new">JAUNS</span>
+                            <span class="badge discount">%%%</span>
+                        </div>
+                        <div class="product-image">
+                            <img src="delta.jpg" alt="TF1 Delta Filtrs">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-brand">Fernox</p>
+                            <h3 class="product-name">TF1 Delta Filtrs</h3>
+                            <div class="product-price">
+                                <span class="current-price">€€€€€</span>
+                                <span class="old-price">€€€€€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-badges">
+                            <span class="badge new">JAUNS</span>
+                            <span class="badge discount">%%%</span>
+                        </div>
+                        <div class="product-image">
+                            <img src="sigmaub.jpg" alt="TF1 Sigma UB Filtrs">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-brand">Fernox</p>
+                            <h3 class="product-name">TF1 Sigma UB Filtrs</h3>
+                            <div class="product-price">
+                                <span class="current-price">€€€€€</span>
+                                <span class="old-price">€€€€€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Informācija</h4>
+                    <ul>
+                        <li><a href="under-construction.html">Par mums</a></li>
+                        <li><a href="under-construction.html">Piegāde</a></li>
+                        <li><a href="under-construction.html">Privātuma politika</a></li>
+                        <li><a href="under-construction.html">Noteikumi un nosacījumi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Klientu serviss</h4>
+                    <ul>
+                        <li><a href="under-construction.html">Kontakti</a></li>
+                        <li><a href="under-construction.html">Atgriešana</a></li>
+                        <li><a href="under-construction.html">Vietnes karte</a></li>
+                        <li><a href="under-construction.html">Zīmoli</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Jaunumu vēstule</h4>
+                    <p>Nepalaidiet garām jaunumus vai piedāvājumus, abonējiet mūsu jaunumu vēstuli.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Jūsu e-pasta adrese">
+                        <button type="submit">Sūtīt</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+                <p class="copyright">Autortiesības © 2025, Fernox , Visas tiesības aizsargātas</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Image gallery functionality
+        function changeImage(imageSrc) {
+            document.getElementById('mainProductImage').src = imageSrc;
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        // Quantity controls
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue < 10) {
+                quantityInput.value = currentValue + 1;
+            }
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+
+        // Add to cart function (Shopify integration ready)
+        function addToCart() {
+            const quantity = document.getElementById('quantity').value;
+            const variantId = document.getElementById('addToCartBtn').getAttribute('data-shopify-variant-id');
+            const productId = document.querySelector('.shopify-product-id').getAttribute('data-shopify-product-id');
+            
+            // Shopify integration - replace with actual Shopify cart API call
+            // Example:
+            // fetch('/cart/add.js', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         id: variantId,
+            //         quantity: parseInt(quantity)
+            //     })
+            // })
+            
+            // Temporary feedback
+            const btn = document.getElementById('addToCartBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Pievienots!';
+            btn.style.background = 'var(--success-color)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+
+        // Buy now function (Shopify integration ready)
+        function buyNow() {
+            const quantity = document.getElementById('quantity').value;
+            const variantId = document.getElementById('buyNowBtn').getAttribute('data-shopify-variant-id');
+            
+            // Shopify integration - redirect to checkout
+            // Example:
+            // window.location.href = `/cart/${variantId}:${quantity}`;
+            
+            // Temporary redirect
+            window.location.href = 'under-construction.html';
+        }
+
+        // Secondary action buttons
+        function registerWarranty() {
+            // Redirect to warranty registration page
+            window.location.href = 'under-construction.html';
+        }
+
+        function view360() {
+            // Open 360 view modal
+            const modal = document.getElementById('view360Modal');
+            if (modal) {
+                modal.classList.add('active');
+                // Small delay to ensure modal is visible before initializing
+                setTimeout(function() {
+                    init360View();
+                }, 100);
+            }
+        }
+
+        function close360View() {
+            const modal = document.getElementById('view360Modal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // 360 View functionality - 3D Video
+        let video360 = null;
+
+        function init360View() {
+            const viewer = document.getElementById('spritespin-viewer') || document.querySelector('.view360-viewer');
+            if (!viewer) {
+                console.error('360 viewer element not found');
+                return;
+            }
+
+            // Clear any existing content
+            viewer.innerHTML = '';
+
+            // Create video container
+            const videoContainer = document.createElement('div');
+            videoContainer.className = 'view360-video-container';
+            
+            // Create video element for 3D/360 video
+            const video = document.createElement('video');
+            video.className = 'view360-video';
+            video.id = 'view360Video';
+            video.setAttribute('controls', 'false');
+            video.setAttribute('playsinline', 'true');
+            video.setAttribute('muted', 'true');
+            video.setAttribute('loop', 'true');
+            video.setAttribute('autoplay', 'true');
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'cover';
+            
+            // Try multiple video sources (Fernox CDN and local)
+            const videoSources = [
+                'tf1-sigma-mini-360.mp4',
+                'tf1-sigma-mini-3d.mp4',
+                'tf1-sigma-mini-360.webm',
+                'tf1-sigma-mini-3d.webm',
+                'https://fernox.com/wp-content/uploads/products/tf1-sigma-mini/tf1-sigma-mini-360.mp4',
+                'https://cdn.fernox.com/products/tf1-sigma-mini/tf1-sigma-mini-3d.mp4'
+            ];
+
+            // Add video sources
+            videoSources.forEach(src => {
+                const source = document.createElement('source');
+                source.src = src;
+                // Determine type based on extension
+                if (src.endsWith('.webm')) {
+                    source.type = 'video/webm';
+                } else {
+                    source.type = 'video/mp4';
+                }
+                video.appendChild(source);
+            });
+
+            // Error handling
+            let hasLoaded = false;
+            video.onerror = function(e) {
+                console.log('Video error:', e);
+                if (!hasLoaded) {
+                    // Try next source or show fallback
+                    setTimeout(function() {
+                        if (!hasLoaded) {
+                            viewer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-size: 18px;">Video nav pieejams. Lūdzu, pievienojiet 3D video failu.</div>';
+                        }
+                    }, 2000);
+                }
+            };
+
+            video.onloadeddata = function() {
+                hasLoaded = true;
+                video360 = video;
+                // Auto-play video
+                video.play().then(function() {
+                    console.log('Video playing');
+                }).catch(function(error) {
+                    console.log('Autoplay prevented:', error);
+                    // Try to play on user interaction
+                    document.addEventListener('click', function playVideo() {
+                        video.play();
+                        document.removeEventListener('click', playVideo);
+                    }, { once: true });
+                });
+            };
+
+            video.oncanplay = function() {
+                if (!hasLoaded) {
+                    hasLoaded = true;
+                    video360 = video;
+                    video.play().catch(function(error) {
+                        console.log('Autoplay prevented');
+                    });
+                }
+            };
+
+            videoContainer.appendChild(video);
+            viewer.appendChild(videoContainer);
+            
+            // Store reference
+            video360 = video;
+            
+            // Force load
+            video.load();
+        }
+
+        function close360View() {
+            const modal = document.getElementById('view360Modal');
+            if (modal) {
+                modal.classList.remove('active');
+                // Pause and cleanup video
+                if (video360) {
+                    video360.pause();
+                    video360.currentTime = 0;
+                    video360 = null;
+                }
+            }
+        }
+
+        function next360Image() {
+            // Not applicable for video, but keep for compatibility
+            if (video360) {
+                // Could seek video if needed
+                // video360.currentTime += 1;
+            }
+        }
+
+        function prev360Image() {
+            // Not applicable for video, but keep for compatibility
+            if (video360) {
+                // Could seek video if needed
+                // video360.currentTime -= 1;
+            }
+        }
+
+        function togglePlayPause() {
+            if (video360) {
+                const btn = document.getElementById('playPauseBtn');
+                if (video360.paused) {
+                    video360.play();
+                    btn.innerHTML = '<i class="fas fa-pause"></i> Pauzēt';
+                } else {
+                    video360.pause();
+                    btn.innerHTML = '<i class="fas fa-play"></i> Atskaņot';
+                }
+            }
+        }
+
+        function resetVideo() {
+            if (video360) {
+                video360.currentTime = 0;
+                video360.pause();
+                const btn = document.getElementById('playPauseBtn');
+                btn.innerHTML = '<i class="fas fa-play"></i> Atskaņot';
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    close360View();
+                }
+                // Space bar to play/pause
+                if (e.key === ' ' && document.getElementById('view360Modal')?.classList.contains('active')) {
+                    e.preventDefault();
+                    togglePlayPause();
+                }
+            });
+        });
+
+        function downloadPipeGuide() {
+            // Open PDF guide in new tab
+            window.open('https://fxdoc.s3.eu-west-2.amazonaws.com/Pipe+cutter+Guide+A4.pdf', '_blank');
+        }
+
+        function downloadDataSheet() {
+            // Open PDF data sheet in new tab
+            window.open('https://files.plytix.com/api/v1.1/file/public_files/pim/assets/45/7d/ae/5f/5fae7d45c573435950d65e1e/texts/39/9c/16/66/66169c393be73a5a7076455d/62708-TF1_Sigma_Mini_22mm_Slipsocket-EN.pdf', '_blank');
+        }
+
+        // Shopify product data loading (for integration)
+        // This would typically be populated from Shopify Liquid or API
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Load product data from Shopify
+            // fetch('/products/tf1-sigma-mini.json')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         document.getElementById('productPrice').textContent = data.variants[0].price;
+            //         document.getElementById('addToCartBtn').setAttribute('data-shopify-variant-id', data.variants[0].id);
+            //         document.getElementById('buyNowBtn').setAttribute('data-shopify-variant-id', data.variants[0].id);
+            //     });
+        });
+    </script>
+    <!-- 360 View Modal -->
+    <div class="view360-modal" id="view360Modal">
+        <div class="view360-container">
+            <div class="view360-header">
+                <h3>TF1 Sigma Mini - 360° Skats</h3>
+                <button class="view360-close" onclick="close360View()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="view360-viewer" id="spritespin-viewer">
+                <!-- SpriteSpin will be initialized here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

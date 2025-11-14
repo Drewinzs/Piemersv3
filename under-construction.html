@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapa tiek veidota - A&J Marketing Group</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .construction-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .construction-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .construction-logo {
+            margin-bottom: 30px;
+        }
+
+        .construction-logo img {
+            max-width: 700px;
+            height: auto;
+        }
+
+        .construction-icon {
+            font-size: 80px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .construction-title {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .construction-text {
+            font-size: 18px;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .construction-info {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .construction-info h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .construction-info p {
+            font-size: 16px;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .construction-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .construction-contact {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .construction-contact p {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .construction-contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .construction-contact a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .construction-company {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--border-color);
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .construction-company-content {
+            flex: 1;
+        }
+
+        .construction-company strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .construction-company-logo {
+            flex-shrink: 0;
+        }
+
+        .construction-company-logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .construction-content {
+                padding: 40px 25px;
+            }
+
+            .construction-title {
+                font-size: 28px;
+            }
+
+            .construction-text {
+                font-size: 16px;
+            }
+
+            .construction-icon {
+                font-size: 60px;
+            }
+
+            .construction-company {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .construction-company-logo img {
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-container">
+        <div class="construction-content">
+            <div class="construction-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            
+            <h1 class="construction-title">Lapa tiek veidota</h1>
+            
+            <p class="construction-text">
+                Atvainojiet par neērtībām! Šobrīd šī lapa tiek aktīvi izstrādāta un uzlabota, lai nodrošinātu jums vislabāko pieredzi.
+            </p>
+            
+            <div class="construction-info">
+                <h3><i class="fas fa-info-circle"></i> Ko mēs darām?</h3>
+                <p>
+                    Mūsu komanda strādā pie jaunās lapas izveides, lai jūs varētu izbaudīt modernu, funkcionālu un ērtu lietošanas pieredzi. Mēs pievienojam jaunas funkcijas, uzlabojam dizainu un optimizējam lapas veiktspēju.
+                </p>
+                <p>
+                    Drīzumā šī lapa būs pilnībā pieejama ar visām nepieciešamajām funkcijām un informāciju.
+                </p>
+            </div>
+            
+            <div class="construction-contact">
+                <h3 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px;">
+                    <i class="fas fa-envelope"></i> Kontaktinformācija
+                </h3>
+                <p>
+                    <strong>Aivars</strong><br>
+                    <a href="tel:+37128127720">+371 28127720</a>
+                </p>
+                <p>
+                    Ja jums ir jautājumi vai vēlaties sazināties ar mums, lūdzu, sazinieties ar mums pa e-pastu vai telefonu.
+                </p>
+                <p>
+                    Mēs atbildēsim jums pēc iespējas ātrāk!
+                </p>
+            </div>
+            
+            <div class="construction-company">
+                <div class="construction-company-content">
+                    <p><strong>A&J Marketing Group</strong></p>
+                    <p>Mēs veidojam nākotnes digitālos risinājumus</p>
+                </div>
+                <div class="construction-company-logo">
+                    <img src="ajm2.png" alt="A&J Marketing Group">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migo City - Trenažieri</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> Zvanīt tagad: +371 26747616</span>
+                    </div>
+                    <div class="top-bar-right">
+                        <div class="language-selector">
+                            <select>
+                                <option selected>Latviešu</option>
+                                <option>Русский</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+                        <div class="sale-banner">
+                            <a href="#sale"><strong>Izpārdošana</strong> Iepērcieties tagad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1><a href="index.html" style="text-decoration: none; color: inherit;">Migo City</a></h1>
+                    </div>
+                    
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="index.html">Visi</a></li>
+                            <li class="has-dropdown">
+                                <a href="#categories">Kategorijas <i class="fas fa-chevron-down"></i></a>
+                                <ul class="dropdown">
+                                    <li class="has-submenu">
+                                        <a href="#velosipedi">Velosipēdi <i class="fas fa-chevron-right"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="#velo-piederumi">Velo piederumi</a></li>
+                                            <li><a href="#e-velosipedi">E-Velosipēdi</a></li>
+                                            <li><a href="#kalnu">Kalnu</a></li>
+                                            <li><a href="#bmx">BMX</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-submenu">
+                                        <a href="#sporta-preces">Sporta preces <i class="fas fa-chevron-right"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="#speka-trenazieri">Spēka trenažieri</a></li>
+                                            <li><a href="trenazeri.html">Velotrenažieri</a></li>
+                                            <li><a href="#eliptiskie">Eliptiskie trenazieri</a></li>
+                                            <li><a href="#skrejcelini">Skrejceļiņi</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#velosipedi">Velosipēdi</a></li>
+                            <li><a href="#kvadracikli">Kvadracikli</a></li>
+                            <li><a href="trenazeri.html">Trenažieri</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="header-actions">
+                        <div class="compare-icon">
+                            <i class="fas fa-balance-scale"></i>
+                            <span class="compare-count">0</span>
+                        </div>
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Trenažieri</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Title -->
+    <section class="page-title-section">
+        <div class="container">
+            <h1 class="page-title">Trenažieri</h1>
+        </div>
+    </section>
+
+    <!-- Products Listing -->
+    <section class="products-listing-section">
+        <div class="container">
+            <div class="products-listing-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="products-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Filter</h3>
+                        <button class="filter-clear">Clear</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Price</h4>
+                        <div class="price-filter">
+                            <input type="range" min="0" max="2000" value="0" class="price-slider" id="priceMin">
+                            <input type="range" min="0" max="2000" value="2000" class="price-slider" id="priceMax">
+                            <div class="price-inputs">
+                                <input type="number" placeholder="€" value="0" class="price-input">
+                                <span>-</span>
+                                <input type="number" placeholder="€" value="2000" class="price-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Subcategories</h4>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox">
+                                <span>Velotrenažieri <span class="count">(42)</span></span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox">
+                                <span>Eliptiskie trenazieri <span class="count">(20)</span></span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox">
+                                <span>Skrejceļiņi <span class="count">(28)</span></span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox">
+                                <span>Spēka trenažieri <span class="count">(7)</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Brands</h4>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox">
+                                <span>Scott <span class="count">(17)</span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Availability</h4>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" checked>
+                                <span>In Stock <span class="count">(75)</span></span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Products Area -->
+                <div class="products-main">
+                    <div class="products-toolbar">
+                        <div class="toolbar-left">
+                            <span class="products-count">Showing 1 to 75 of 75 (1 Pages)</span>
+                        </div>
+                        <div class="toolbar-right">
+                            <label class="sort-label">
+                                Sort By:
+                                <select class="sort-select">
+                                    <option>Default</option>
+                                    <option>Name (A - Z)</option>
+                                    <option>Name (Z - A)</option>
+                                    <option>Price (Low > High)</option>
+                                    <option>Price (High > Low)</option>
+                                </select>
+                            </label>
+                            <label class="show-label">
+                                Show:
+                                <select class="show-select">
+                                    <option>25</option>
+                                    <option>50</option>
+                                    <option selected>75</option>
+                                    <option>100</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="products-grid listing-grid">
+                        <!-- Product Card 1 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-33%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Eleptic Gym Sport bike">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Eleptic Gym Sport bike</h3>
+                                <div class="product-price">
+                                    <span class="current-price">136,36€</span>
+                                    <span class="old-price">202,48€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 136,36€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-22%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Fitness life">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Fitness life</h3>
+                                <div class="product-price">
+                                    <span class="current-price">125,00€</span>
+                                    <span class="old-price">161,16€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 125,00€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-34%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Gymbit sport">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Gymbit sport</h3>
+                                <div class="product-price">
+                                    <span class="current-price">145,00€</span>
+                                    <span class="old-price">220,00€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 145,00€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-30%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Horizontal">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Horizontal</h3>
+                                <div class="product-price">
+                                    <span class="current-price">136,36€</span>
+                                    <span class="old-price">194,21€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 136,36€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-39%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Horizontal EVERFIT BRXR90 COMFORT">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Horizontal EVERFIT BRXR90 COMFORT</h3>
+                                <div class="product-price">
+                                    <span class="current-price">322,31€</span>
+                                    <span class="old-price">524,79€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 322,31€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div class="product-card listing-card">
+                            <div class="product-badges">
+                                <span class="badge discount">-25%</span>
+                            </div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Kettler">
+                                <div class="product-overlay">
+                                    <button class="quick-view-btn">Quickview</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-brand">Brand: Scott</p>
+                                <h3 class="product-name">Kettler</h3>
+                                <div class="product-price">
+                                    <span class="current-price">305,79€</span>
+                                    <span class="old-price">409,09€</span>
+                                </div>
+                                <p class="product-tax">Ex Tax: 305,79€</p>
+                                <div class="product-actions-listing">
+                                    <button class="btn-add-cart-listing">Add to Cart</button>
+                                    <button class="btn-wishlist-listing" title="Add to Wish List"><i class="far fa-heart"></i></button>
+                                    <button class="btn-compare-listing" title="Compare this Product"><i class="fas fa-balance-scale"></i></button>
+                                </div>
+                                <button class="btn-buy-now-listing">Buy Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Add more product cards as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#delivery">Delivery</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#sitemap">Site Map</a></li>
+                        <li><a href="#brands">Brands</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Don't miss any updates or promotions by signing up to our newsletter.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">Copyright © 2024, Migo City, All Rights Reserved</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+

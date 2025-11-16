@@ -1016,8 +1016,12 @@ section {
     gap: 30px;
     margin-bottom: 30px;
     margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
     padding-top: 20px;
     padding-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
     border-bottom: 2px solid #e0e0e0;
     overflow: hidden;
     width: 100%;
@@ -1026,6 +1030,37 @@ section {
     z-index: 10;
     background: var(--white);
     min-height: 70px;
+}
+
+@media (max-width: 768px) {
+    .products-nav-tabs {
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 20px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .products-nav-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .nav-tab {
+        flex-shrink: 0;
+        padding: 15px 0 15px 0;
+        font-size: 14px;
+    }
+    
+    .nav-tab:first-child {
+        margin-left: 0;
+    }
 }
 
 .nav-tab {

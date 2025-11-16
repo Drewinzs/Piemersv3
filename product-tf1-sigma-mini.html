@@ -325,10 +325,57 @@
             width: 100%;
         }
 
+        .resources-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .resources-header h3 {
+            margin-bottom: 0 !important;
+        }
+
+        .resources-toggle {
+            display: none;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .resources-toggle:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+        }
+
+        .resources-toggle.active {
+            transform: rotate(180deg);
+        }
+
         .secondary-buttons {
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        /* Desktop: always show buttons */
+        @media (min-width: 769px) {
+            .secondary-buttons {
+                max-height: none !important;
+                opacity: 1 !important;
+                overflow: visible !important;
+            }
+            
+            /* Hide mobile resources on desktop */
+            .mobile-resources {
+                display: none !important;
+            }
         }
 
         .btn-secondary-action {
@@ -442,6 +489,69 @@
 
             .features-list {
                 grid-template-columns: 1fr;
+            }
+
+            .resources-toggle {
+                display: block;
+            }
+
+            .secondary-buttons {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+                opacity: 0;
+            }
+
+            .secondary-buttons.active {
+                max-height: 500px;
+                opacity: 1;
+                transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+            }
+
+            /* Hide desktop resources (in gallery) on mobile */
+            .product-gallery .product-actions-secondary {
+                display: none;
+            }
+
+            /* Make mobile resources smaller and more discreet */
+            .mobile-resources {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                padding: 12px 15px;
+                background: transparent;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+            }
+
+            .mobile-resources .resources-header {
+                margin-bottom: 10px;
+            }
+
+            .mobile-resources .resources-header h3 {
+                font-size: 14px !important;
+                color: #666 !important;
+                margin-bottom: 0 !important;
+                font-weight: 500;
+            }
+
+            .mobile-resources .resources-toggle {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .mobile-resources .btn-secondary-action {
+                padding: 8px 12px;
+                font-size: 13px;
+                border-width: 1px;
+            }
+
+            .mobile-resources .btn-secondary-action i {
+                font-size: 14px;
+                width: 16px;
+            }
+
+            .mobile-resources .secondary-buttons {
+                gap: 8px;
             }
         }
 
@@ -647,7 +757,7 @@
                                 <a href="under-construction.html">Kategorijas <i class="fas fa-chevron-down"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="under-construction.html">Filtri</a></li>
-                                    <li><a href="under-construction.html">Tīrīšanas līdzekļi</a></li>
+                                    <li><a href="category-tirisanas-lidzekli.html">Tīrīšanas līdzekļi</a></li>
                                     <li><a href="under-construction.html">Korozijas inhibitori</a></li>
                                 </ul>
                             </li>
@@ -716,8 +826,13 @@
                     
                     <!-- Papildu resursi moved here -->
                     <div class="product-actions-secondary">
-                        <h3 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px;">Papildu resursi</h3>
-                        <div class="secondary-buttons">
+                        <div class="resources-header">
+                            <h3 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px; margin-top: 0;">Papildu resursi</h3>
+                            <button class="resources-toggle" id="resourcesToggle" onclick="toggleResources()" aria-label="Toggle resources">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="secondary-buttons" id="secondaryButtons">
                             <button class="btn-secondary-action" onclick="registerWarranty()">
                                 <i class="fas fa-shield-alt"></i> Reģistrēt produkta garantiju
                             </button>
@@ -818,6 +933,30 @@
                             <li>• Magnēts – Augstas jaudas neodīms</li>
                             <li>• Blīvējumi un paplāksnes – EPDM</li>
                         </ul>
+                    </div>
+
+                    <!-- Papildu resursi for mobile -->
+                    <div class="product-actions-secondary mobile-resources">
+                        <div class="resources-header">
+                            <h3 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px; margin-top: 0;">Papildu resursi</h3>
+                            <button class="resources-toggle" id="resourcesToggleMobile" onclick="toggleResourcesMobile()" aria-label="Toggle resources">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="secondary-buttons" id="secondaryButtonsMobile">
+                            <button class="btn-secondary-action" onclick="registerWarranty()">
+                                <i class="fas fa-shield-alt"></i> Reģistrēt produkta garantiju
+                            </button>
+                            <button class="btn-secondary-action" onclick="view360()">
+                                <i class="fas fa-cube"></i> Produkta 360° skats
+                            </button>
+                            <button class="btn-secondary-action" onclick="downloadPipeGuide()">
+                                <i class="fas fa-file-pdf"></i> Cauruļu griezēja rokasgrāmata (PDF)
+                            </button>
+                            <button class="btn-secondary-action" onclick="downloadDataSheet()">
+                                <i class="fas fa-file-pdf"></i> Produkta datu lapa (PDF)
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Shopify Product ID (hidden, for integration) -->
@@ -991,6 +1130,26 @@
             const currentValue = parseInt(quantityInput.value);
             if (currentValue > 1) {
                 quantityInput.value = currentValue - 1;
+            }
+        }
+
+        // Toggle resources dropdown (desktop version)
+        function toggleResources() {
+            const buttons = document.getElementById('secondaryButtons');
+            const toggle = document.getElementById('resourcesToggle');
+            if (buttons && toggle) {
+                buttons.classList.toggle('active');
+                toggle.classList.toggle('active');
+            }
+        }
+
+        // Toggle resources dropdown (mobile version)
+        function toggleResourcesMobile() {
+            const buttons = document.getElementById('secondaryButtonsMobile');
+            const toggle = document.getElementById('resourcesToggleMobile');
+            if (buttons && toggle) {
+                buttons.classList.toggle('active');
+                toggle.classList.toggle('active');
             }
         }
 
@@ -1242,6 +1401,28 @@
         // Shopify product data loading (for integration)
         // This would typically be populated from Shopify Liquid or API
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize resources dropdown state (desktop version)
+            const buttons = document.getElementById('secondaryButtons');
+            const toggle = document.getElementById('resourcesToggle');
+            if (buttons && toggle) {
+                // On desktop, always show buttons; on mobile, hide by default
+                if (window.innerWidth > 768) {
+                    buttons.classList.add('active');
+                } else {
+                    buttons.classList.remove('active');
+                }
+            }
+
+            // Initialize resources dropdown state (mobile version)
+            const buttonsMobile = document.getElementById('secondaryButtonsMobile');
+            const toggleMobile = document.getElementById('resourcesToggleMobile');
+            if (buttonsMobile && toggleMobile) {
+                // On mobile, hide by default
+                if (window.innerWidth <= 768) {
+                    buttonsMobile.classList.remove('active');
+                }
+            }
+
             // Example: Load product data from Shopify
             // fetch('/products/tf1-sigma-mini.json')
             //     .then(response => response.json())

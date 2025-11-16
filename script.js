@@ -416,8 +416,8 @@ function initCookiePopup() {
     
     if (!cookieConsent) {
         // Show popup after a short delay (longer on mobile for better UX)
-        const isMobile = window.innerWidth <= 768;
-        const delay = isMobile ? 1500 : 1000;
+        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const delay = isMobile ? 2000 : 1000;
         
         setTimeout(() => {
             if (cookieOverlay) {
@@ -428,6 +428,7 @@ function initCookiePopup() {
                 if (isMobile) {
                     document.body.style.position = 'fixed';
                     document.body.style.width = '100%';
+                    document.body.style.top = `-${window.scrollY}px`;
                 }
             }
         }, delay);
@@ -466,8 +467,13 @@ function initCookiePopup() {
             // Restore body scroll and remove blur
             document.body.classList.remove('cookie-popup-active');
             // Restore mobile body positioning
+            const scrollY = document.body.style.top;
             document.body.style.position = '';
             document.body.style.width = '';
+            document.body.style.top = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
         }
     }
     
